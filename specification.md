@@ -73,7 +73,131 @@ In the event of a fraudulent Project Owner, the Facilitator is required to take 
 
 The BAO protocol standard is dictated by the following specification.
 
-```
-sdsd
+```javascript
+
+interface BAOProtocol{
+    
+    // Track the state of the protocol lifecycle
+    var protcolStatus;
+
+    // Address of the user that deployed the contract
+    // Hardcoded address at deployment
+    var protocolOwner;
+
+    // Address of the user that's facilitating the protocol deployment
+    var facilitator;
+
+    // Address of the project owner of the project
+    var projectOwner;
+
+    // Addresses of the funders
+    // Ex: If NFT mint is the funding source, this should correspond to the ownership
+    // index in the NFT contract
+    var funders[];
+
+    // Treasury for fund collection proceeds
+    // Ex: NFT mint treasury if funding is done through a NFT mint
+    var collectionTreasury;
+
+    // Treasury for fund distribution proceeds
+    var distributionTreasury;
+
+    // Project owner's stake for liability risks. This can be withdrawn to the
+    // facilitator's wallet at any point of protcol execution
+    var projectOwnerStake;
+
+    /** Project related parameters **/
+
+    // Methods of funding, currently supported { NFT_MINT,  }
+    var fundingMethod;
+
+    // This is an optional propery. If funding is by NFT_MINT, this stores the 
+    // NFT contract address
+    var fundingMethodContract;
+    
+    // Total funding amount expected to be raised
+    var fundingAmount;
+
+    // Percentage of funds that needs to be raised at MINIMUM for the funds to be unlocked
+    // to the project owner
+    var minRaisePercentage;
+
+    // Amount that the project owner need to stake in the contract for liability
+    var projectOwnerStakeRequirement;
+
+    /**
+     * Setter for the facilitator addressl
+     * Invoked by: Protocol Owner
+     * @_facilitator Faciliator's address
+     * 
+    **/
+    function setFacilitator(_facilitator);
+    
+    /**
+     * Function to initialize the protocol
+     * Invoked by: Facilitator
+     * @_projectOwner Faciliator's address
+     * @_fundingAmount
+     * @_minRaisePercentage
+     * @_projectOwnerStakeRequirement
+     * 
+    **/
+    function init(_projectOwner, _fundingAmount, _minRaisePercentage _projectOwnerStakeRequirement);
+
+    /**
+     * Function to set the funding method
+     * Let's see how we use this with a ERC-721 NFT contract
+     * There are 2 possible ways
+     * ---- 01: Extending the BAO contract to ERC-721 so that BAO can facilitate the mint
+     *          This allows BAO contract to natively keep track of the minters, and related details
+     * 
+     * ---- 02: Use a custom ERC-721 contract for minting that invokes the BAO contract methods
+     *          This decouples BAO from the NFT contract, but the NFT contract needs to be 
+     *          custom created to make sure it invokes the relevant BAO functions
+     * Invoked by: Facilitator
+    **/
+    function setFundingMethod(_fundingMethod, _fundingMethodContract);
+
+    /**
+     * Function to stake the amount required by the project owner
+     * Validates if the amount sent by project owner matched the projectOwnerStakeRequirement
+     * Once stake is complete, the protocol status is ACTIVE
+     * Invoked by: Facilitator
+    **/
+    function stake() payable;
+
+    /**
+     * Function to withdraw the collected funds to the project owner's wallet
+     * Once the withdraw is compelte, the protocol status is FUNDED
+     * TODO: Introduce tranching regulated by the facilitators
+     * Invoked by: Project Owner
+    **/
+    function withdrawFunds() payable;
+
+    /**
+     * Function to add funds to the distributionTreasury
+     * Project owner needs to be invoke this from their wallet with any specific amount of funds
+     * Funds has to be tokens in the relevant blockchain
+     * Preferred to be USDC given it's token implementations across many chains
+     * Invoked by: Project Owner
+    **/
+    function collectRevenue() payable;
+
+    /**
+     * Function to distribute the collected revenue to the NFT holders
+     * All funds collectd in distributionTreasury will be distributed to the holders equally
+     * Invoked by: Facilitator
+    **/
+    function payout() payable;
+
+    /**
+     * Function to cancel the protocol and return all funds to the funders
+     * This can ONLY be invoked in the ACTIVE stage or earlier
+     * Project owner's stake will be returned as well
+     * Invoked by: Facilitator
+    **/
+    function dissolve();
+}
+
 ```
 
