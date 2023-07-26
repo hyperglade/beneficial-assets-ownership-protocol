@@ -125,6 +125,19 @@ interface BAOProtocol{
     // Amount that the project owner need to stake in the contract for liability
     var projectOwnerStakeRequirement;
 
+    // Portion of the project to be given to the project owner
+    // If the project owner gets his cut beforehand, this can be 0%
+    var projectOwnerRevenuePercentage;
+
+    // Portion of the project to be given to the facilitator
+    var faciliatatorRevenuePercentage;
+
+    // Portion of the project to be given to the funders
+    var funderRevenuePercentage;
+
+    // Portion of the project to be given to the protocol owner
+    var protocolOwnerRevenuePercentage;
+
     /**
      * Setter for the facilitator addressl
      * Invoked by: Protocol Owner
@@ -142,7 +155,7 @@ interface BAOProtocol{
      * @_projectOwnerStakeRequirement
      * 
     **/
-    function init(_projectOwner, _fundingAmount, _minRaisePercentage _projectOwnerStakeRequirement);
+    function init(_projectOwner, _fundingAmount, _minRaisePercentage _projectOwnerStakeRequirement, _projectOwnerRevenuePercentage, _faciliatatorRevenuePercentage, _funderRevenuePercentage, _protocolOwnerRevenuePercentage);
 
     /**
      * Function to set the funding method
@@ -185,8 +198,12 @@ interface BAOProtocol{
 
     /**
      * Function to distribute the collected revenue to the NFT holders
-     * All funds collectd in distributionTreasury will be distributed to the holders equally
-     * Invoked by: Facilitator
+     * All funds collectd in distributionTreasury will be distributed as below,
+     * - Facilitator: faciliatatorRevenuePercentage x distributedTreasury
+     * - Project Owner: projectOwnerRevenuePercentage x distributedTreasury
+     * - Protocol Owner: funderRevenuePercentage x distributedTreasury % funders
+     * - Each Funder: faciliatatorRevenuePercentage x distributedTreasury
+     * Invoked by: Facilitator 
     **/
     function payout() payable;
 
