@@ -5,7 +5,6 @@ Beneficial Asset Ownership (BAO) protocol aims at creating real-world utility on
 
 ## Abstract
 
-## Motivation
 
 ## Specification
 
@@ -69,4 +68,12 @@ Fund distribution is carried out as per the specified percentages of the contrac
        
 16. Rugpull Safeguard
 In the event of a fraudulent Project Owner, the Facilitator is required to take required legal measures to recover at best the funding acquired for the Project. The Project Owner’s stake can be used for carrying out the legal actions. Recovered funding needs to be deposited to the distribution wallet of the contract to be dispersed towards the NFT Holders.
+
+### Contract Specification
+
+The BAO protocol standard is dictated by the following specification.
+
+```
+sdsd
+```
 
