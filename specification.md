@@ -175,7 +175,7 @@ interface BAOProtocol{
      * Function to stake the amount required by the project owner
      * Validates if the amount sent by project owner matched the projectOwnerStakeRequirement
      * Once stake is complete, the protocol status is ACTIVE
-     * Invoked by: Facilitator
+     * Invoked by: Project Owner
     **/
     function stake() payable;
 
@@ -201,8 +201,8 @@ interface BAOProtocol{
      * All funds collectd in distributionTreasury will be distributed as below,
      * - Facilitator: faciliatatorRevenuePercentage x distributedTreasury
      * - Project Owner: projectOwnerRevenuePercentage x distributedTreasury
-     * - Protocol Owner: funderRevenuePercentage x distributedTreasury % funders
-     * - Each Funder: faciliatatorRevenuePercentage x distributedTreasury
+     * - Protocol Owner: protocolOwnerRevenuePercentage x distributedTreasury
+     * - Each Funder: funderRevenuePercentage x distributedTreasury / funders
      * Invoked by: Facilitator 
     **/
     function payout() payable;
