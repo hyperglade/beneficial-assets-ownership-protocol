@@ -99,6 +99,9 @@ interface BAOProtocol{
     // Ex: NFT mint treasury if funding is done through a NFT mint
     var collectionTreasury;
 
+    // Treasury for storing Project Owner staking
+    var stakingTreasury;
+
     // Treasury for fund distribution proceeds
     var distributionTreasury;
 
@@ -139,7 +142,7 @@ interface BAOProtocol{
     var protocolOwnerRevenuePercentage;
 
     /**
-     * Setter for the facilitator addressl
+     * Setter for the facilitator address
      * Invoked by: Protocol Owner
      * @_facilitator Faciliator's address
      * 
@@ -175,6 +178,7 @@ interface BAOProtocol{
      * Function to stake the amount required by the project owner
      * Validates if the amount sent by project owner matched the projectOwnerStakeRequirement
      * Once stake is complete, the protocol status is ACTIVE
+     * Stake is stored in the stakingTreasury
      * Invoked by: Project Owner
     **/
     function stake() payable;
@@ -183,7 +187,7 @@ interface BAOProtocol{
      * Function to withdraw the collected funds to the project owner's wallet
      * Once the withdraw is compelte, the protocol status is FUNDED
      * TODO: Introduce tranching regulated by the facilitators
-     * Invoked by: Project Owner
+     * Invoked by: Facilitator
     **/
     function withdrawFunds() payable;
 
