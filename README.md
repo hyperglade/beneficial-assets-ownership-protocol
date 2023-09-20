@@ -1,10 +1,25 @@
-# Beneficial Assets Ownership (BAO)
+# Project Name
 
-This repo contains information regarding the BAO protocol introduced by [Hyperglade](https://hyperglade.com/). This is a WIP repo.
+## Overview
 
-## BAO Roadmap
-- [X] Complete the v1.0 of the specification
-- [ ] Implement BAO protocol using Solidity/EVM ofr Tezos
+This GitHub repository contains two main folders: `contract` and `frontend`. The `contract` folder contains a smart contract coded in SmartPy format, while the `frontend` folder contains a web application built using React and TypeScript.
 
-## Contributing
-Please reach us at hello@hyperglade.io or manujith@hyperglade.io if you would like to be a contributor.
+## Smart Contract (contract)
+
+The `contract` folder contains the code for a smart contract written in SmartPy. This smart contract is designed to [briefly describe the purpose of the smart contract]. Below are some key details about the contract:
+
+- **File**: `BAOProtocol.py`
+- **Description**: `Smarpty Code for BAO Protocol.`
+
+### Installation and Usage
+
+Use Smartpy IDE or CLI :
+
+https://legacy.smartpy.io/ide
+
+https://legacy.smartpy.io/docs/cli#cli
+
+## Frontend Web Application (frontend)
+
+The `frontend` folder contains the code for a web application built using React and TypeScript. This application interacts with the smart contract in the `contract` folder and provides a user-friendly interface for users to [briefly describe what the frontend application does].
+
