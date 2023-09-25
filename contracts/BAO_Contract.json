@@ -1,0 +1,16 @@
+{
+   "name":"BAO Protocol",
+   "views":[
+      
+   ],
+   "authors":[
+      "Hyperglade"
+   ],
+   "license":{
+      "name":"MIT"
+   },
+   "interfaces":[
+      "TZIP-12"
+   ],
+   "description":"BAO Protocol NFT_Mint Contract."
+}
