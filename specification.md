@@ -218,6 +218,14 @@ interface BAOProtocol{
      * Invoked by: Facilitator
     **/
     function dissolve();
+
+    /**
+     * Function to staked funds back to the Project Owner
+     * This can only be invoked if the protocol is in the FUNDED state
+     * Facilitator can invoke this at any point after the FUNDED state
+     * Invoked by: Facilitator
+    **/
+    function withdrawStake() payable;
 }
 
 ```
