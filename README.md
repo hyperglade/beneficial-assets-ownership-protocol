@@ -13,7 +13,7 @@ You can help us extend the BAO protocol in 3 ways,
 
 ### Implmenting use cases / examples using BAO procotol
 
-The goal of BAO is to provide an open protocol that builders can easily leverage and build for their own use cases. Currently at Hyperglade, we are using BAO for our own crowd-financing use case that allows funders across borders to invest in projects, and derive a long revenue out of it. If you are building a use case on top of an existing BAO contract, read on the Usage section for know more for more details. If you have a cool use case done using BAO, open a ticket with the subject "[Showcase] Your project title" for us to add it to our demo section.
+The goal of BAO is to provide an open protocol that builders can easily leverage and build for their own use cases. Currently at Hyperglade, we are using BAO for our own crowd-financing use case that allows funders across borders to invest in projects, and derive a long revenue out of it. If you are building a use case on top of an existing BAO contract, read on the [Usage section](#usage) for know more for more details. If you have a cool use case done using BAO, open a ticket with the subject "[Showcase] Your project title" for us to add it to our demo section.
 
 ### Implementing the BAO protocl in other chains
 
@@ -48,19 +48,4 @@ Find the implementation for your chain from the `contracts` folder and follow th
 
 2. Contract connector
 Each chain would have a different way for your webapp/backend to the deployed contract. In the backend this is usually done through a relay node that lets you interact with the key-pair stored in your backend. In the frontend, this would be done using a SDK or a web3.js connector. Figure out which of these methods are used for your app. The `examples` folder can be a good starting point, especially for web apps.
-
-## Smart Contract (contract)
-
-The `contract` folder contains the code for a smart contract written in SmartPy. This smart contract is designed to [briefly describe the purpose of the smart contract]. Below are some key details about the contract:
-
-- **File**: `BAOProtocol.py`
-- **Description**: `Smarpty Code for BAO Protocol.`
-
-### Installation and Usage
-
-Use Smartpy IDE or CLI :
-
-https://legacy.smartpy.io/ide
-
-https://legacy.smartpy.io/docs/cli#cli
 
