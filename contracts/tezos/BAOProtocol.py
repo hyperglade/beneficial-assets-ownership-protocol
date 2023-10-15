@@ -1,7 +1,6 @@
 import smartpy as sp
 
-# FA2Coin = sp.io.import_stored_contract("FA2Coin")
-FA2Coin = sp.io.import_script_from_url("file:FA2.py")
+FA2Coin = sp.io.import_script_from_url("https://legacy.smartpy.io/templates/FA2.py")
 FA2 = sp.io.import_script_from_url("https://legacy.smartpy.io/templates/fa2_lib.py")
 Utils = sp.io.import_script_from_url("https://raw.githubusercontent.com/RomarQ/tezos-sc-utils/main/smartpy/utils.py")
 
